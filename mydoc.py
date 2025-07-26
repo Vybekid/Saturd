@@ -1,68 +1,27 @@
 import turtle
 
-# Set up the screen
+# Setup the screen
 screen = turtle.Screen()
-screen.title("Yin and Yang")
+screen.bgcolor("black")
 
-# Create turtle
-t = turtle.Turtle()
-t.speed(0)
+# Create a turtle
+pen = turtle.Turtle()
+pen.speed(0) # Set the drawing speed to the fastest
+pen.hideturtle()
 
-# Constants
-RADIUS = 140
+# Define a list of rainbow colors
+colors = ["red", "orange", "yellow", "green", "blue", "indigo"]
 
-# Draw outer circle
-t.penup()
-t.goto(0, -RADIUS)
-t.pendown()
-t.pensize(2)
-t.circle(RADIUS)
+# Main loop to rotate the squares
+for i in range(72):
+    pen.pencolor(colors[i % 6]) # Cycle through the colors
+    
+    # Draw a single square
+    for _ in range(4):
+        pen.forward(200)
+        pen.right(90)
+        
+    pen.right(5) # Tilt the turtle by 5 degrees for the next square
 
-# Draw black half
-t.penup()
-t.goto(0, -RADIUS)
-t.setheading(0)
-t.fillcolor("black")
-t.begin_fill()
-t.circle(RADIUS, 180)
-t.circle(RADIUS / 2, 180)
-t.circle(-RADIUS / 2, 180)
-t.end_fill()
-
-# Draw white half
-t.penup()
-t.goto(0, -RADIUS)
-t.setheading(0)
-t.begin_fill()
-t.circle(-RADIUS, 180)
-t.circle(-RADIUS / 2, 180)
-t.circle(RADIUS / 2, 180)
-t.end_fill()
-
-# Small black dot in white area
-t.penup()
-t.goto(0, RADIUS / 2)
-t.setheading(0)
-t.fillcolor("black")
-t.begin_fill()
-t.circle(RADIUS / 10)
-t.end_fill()
-
-# Small white dot in black area
-t.penup()
-t.goto(0, -RADIUS / 2)
-t.setheading(0)
-t.fillcolor("white")
-t.begin_fill()
-t.circle(RADIUS / 10)
-t.end_fill()
-
-# Add text
-t.penup()
-t.goto(0, -RADIUS - 40)
-t.pencolor("black")
-t.write("BY :- amazing_coder007", align="center", font=("Arial", 10, "bold"))
-
-# Finish
-t.hideturtle()
+# Keep the window open until it's closed
 turtle.done()
