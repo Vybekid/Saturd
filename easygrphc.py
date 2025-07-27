@@ -1,24 +1,19 @@
 import turtle
 
-# Setup the screen
 screen = turtle.Screen()
 screen.bgcolor("black")
 
-# Create a turtle
 pen = turtle.Turtle()
-pen.speed(0) # Set the drawing speed to the fastest
+pen.speed(0) 
 pen.hideturtle()
 pen.width(2)
 
-# Define two contrasting colors
-colors = ["white", "cyan"]
+colors = ["#FF00FF", "#00FFFF", "#FAED27", "#FF0054"] 
 
-# Drawing loop
-for i in range(180):
-    pen.pencolor(colors[i % 2]) # Alternate between the two colors
-    pen.circle(150)             # Draw the outer circle
-    pen.circle(i / 2)           # Draw an inner, growing circle
-    pen.left(2)                 # Rotate by 2 degrees
+for i in range(200):
+    pen.pencolor(colors[i % 4])
+    pen.forward(i * 2)          
+    pen.left(170)               
 
-# Keep the window open until it's closed
+
 turtle.done()
